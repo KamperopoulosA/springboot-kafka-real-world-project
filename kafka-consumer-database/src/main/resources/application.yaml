@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: kafka-consumer-database
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: wikimedia-consumer-groupv2
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/wikimedia_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8081
